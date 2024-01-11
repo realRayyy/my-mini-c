@@ -52,6 +52,12 @@ pub enum TokenType {
     ILLEGAL,
 }
 
+impl PartialEq for TokenType {
+    fn eq(&self, other: &Self) -> bool {
+        std::mem::discriminant(self) == std::mem::discriminant(other)
+    }
+}
+
 pub struct Token {
     pub token_type: TokenType,
     pub token_str: Option<String>,
